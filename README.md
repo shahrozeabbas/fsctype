@@ -16,6 +16,8 @@ This method is highly sensitive to the marker genes used. You can use the marker
 pkgs <- c('Seurat', 'dplyr', 'ggplot2', 'data.table')
 invisible(lapply(pkgs, require, character.only=TRUE))
 
+source('https://github.com/shahrozeabbas/fsctype/blob/main/R/fsctype.R')
+
 object <- readRDS('seurat_object.rds')
 markers <- readRDS('annotation_markers_list.rds')
 
