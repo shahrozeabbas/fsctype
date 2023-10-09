@@ -13,5 +13,32 @@ This method is different than the original in that instead of relying on precomp
 This method is highly sensitive to the marker genes used. You can use the marker genes from the original ScType database or provide your own, as long as the input marker list is created to look like the output of gene_set_prepare.R from the original method. In other words, you need a nested named list with at least positive markers for your cell types or regions of interest. 
 
 ```
-test
+pkgs <- c('Seurat', 'dplyr', 'ggplot2', 'data.table')
+invisible(lapply(pkgs, require, character.only=TRUE))
+
+object <- readRDS('seurat_object.rds')
+markers <- readRDS('annotation_markers_list.rds')
+
+
+counts <- as.data.frame(
+        object %>% 
+            Seurat::ScaleData(verbose=FALSE, features=unique(unlist(markers))) %>% 
+            Seurat::GetAssayData(slot='scale.data')
+)
+
+
+cells <- colnames(object)
+graph <- object %>% get_graph()
+k <- round(sqrt(ncol(object) * 0.5))
+
+predictions <- fsctype(barcodes=cells, graph=graph, counts=counts, markers=markers, n_neighbors=k)
+
+
+cell_type <- predictions[, prediction]
+names(cell_type) <- predictions[, cells]
+object <- object %>% AddMetaData(metadata=factor(cell_type), col.name='cell_type') 
+
+g <- object %>% DimPlot(group.by='cell_type', label=TRUE, repel=TRUE, pt.size=1)
+ggsave(plot=g, width=12, height=8, filename='plots/pbmc3k_fsctype_umap.png')
+
 ```
