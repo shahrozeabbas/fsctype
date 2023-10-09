@@ -1,5 +1,5 @@
 # fsctype
-Modification of the Original ScType Method for Barcode Annotation using KNN Algorithm
+Modification of the Original [ScType]([url](https://github.com/IanevskiAleksandr/sc-type)) Method for Barcode Annotation using KNN Algorithm
 
 
 The fsctype method is based on the original `ScType` method used for cluster annotation of single-cell datasets using known markers. 
