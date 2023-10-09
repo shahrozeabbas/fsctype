@@ -12,10 +12,27 @@ This method is different than the original in that instead of relying on precomp
 
 This method is highly sensitive to the marker genes used. You can use the marker genes from the original ScType database or provide your own, as long as the input marker list is created to look like the output of gene_set_prepare.R from the original method. In other words, you need a nested named list with at least positive markers for your cell types or regions of interest. 
 
+Your dataset must be processed up to the shared neighborhood graph calculation or some `igraph` object with similarity weights for edges. 
+
 ```
 pkgs <- c('Seurat', 'dplyr', 'ggplot2', 'data.table')
 invisible(lapply(pkgs, require, character.only=TRUE))
 
+object <- CreateSeuratObject(counts=Read10X_h5('filtered_feature_bc_matrix.h5'))
+
+object <- object %>%
+
+                NormalizeData() %>%
+                FindVariableFeatures() %>%
+                ScaleData(verbose=FALSE) %>%
+                RunPCA(verbose=FALSE) %>%
+                FindNeighbors(dims=seq(10)) %>%
+                RunUMAP(dims=seq(10))
+```
+
+Once you have run `FindNeighbors`, you can use this graph downstream for `fsctype` as it relies on the k nearest neighbors of each cell for annotation. 
+
+```
 source('https://github.com/shahrozeabbas/fsctype/blob/main/R/fsctype.R')
 
 object <- readRDS('seurat_object.rds')
