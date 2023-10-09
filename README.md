@@ -15,7 +15,7 @@ This method is highly sensitive to the marker genes used. You can use the marker
 Your dataset must be processed up to the shared neighborhood graph calculation or some `igraph` object with similarity weights for edges. 
 
 ```
-pkgs <- c('Seurat', 'dplyr', 'ggplot2', 'data.table')
+pkgs <- c('Seurat', 'dplyr', 'ggplot2', 'data.table', 'igraph')
 invisible(lapply(pkgs, require, character.only=TRUE))
 
 object <- CreateSeuratObject(counts=Read10X_h5('filtered_feature_bc_matrix.h5'))
