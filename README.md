@@ -58,7 +58,7 @@ object <- object %>% AddMetaData(metadata=factor(cell_type), col.name='cell_type
 
 ggsave(
   width=12, height=8, filename='fsctype_predictions_umap.png',
-  plot=g <- object %>% DimPlot(group.by='cell_type', label=TRUE, repel=TRUE, pt.size=1)
+  plot=DimPlot(object, group.by='cell_type', label=TRUE, repel=TRUE, pt.size=1)
 )
 
 ```
