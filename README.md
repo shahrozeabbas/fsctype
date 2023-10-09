@@ -2,9 +2,9 @@
 Modification of the Original ScType Method for Barcode Annotation using KNN Algorithm
 
 
-The fsctype method is based on the original ScType method used for cluster annotation of single-cell datasets using known markers. 
+The fsctype method is based on the original `ScType` method used for cluster annotation of single-cell datasets using known markers. 
 
-This variation uses the data.table package to substantially speed up calculations and also makes use of the future package for parallel execution. 
+This variation uses the `data.table` package to substantially speed up calculations and also makes use of the `future` package for parallel execution. 
 
 A typical dataset of 10,000 barcodes or less will run in under 10 seconds in a memory efficient way. You should only rely on parallel execution if your dataset is larger than 50,000 barcodes as the speed up is minimal otherwise and not noticeable. 
 
