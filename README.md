@@ -56,7 +56,9 @@ cell_type <- predictions[, prediction]
 names(cell_type) <- predictions[, cells]
 object <- object %>% AddMetaData(metadata=factor(cell_type), col.name='cell_type') 
 
-g <- object %>% DimPlot(group.by='cell_type', label=TRUE, repel=TRUE, pt.size=1)
-ggsave(plot=g, width=12, height=8, filename='plots/pbmc3k_fsctype_umap.png')
+ggsave(
+  width=12, height=8, filename='fsctype_predictions_umap.png',
+  plot=g <- object %>% DimPlot(group.by='cell_type', label=TRUE, repel=TRUE, pt.size=1)
+)
 
 ```
