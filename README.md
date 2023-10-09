@@ -35,7 +35,6 @@ Once you have run `FindNeighbors`, you can use this graph downstream for `fsctyp
 ```
 source('https://github.com/shahrozeabbas/fsctype/blob/main/R/fsctype.R')
 
-object <- readRDS('seurat_object.rds')
 markers <- readRDS('annotation_markers_list.rds')
 
 
