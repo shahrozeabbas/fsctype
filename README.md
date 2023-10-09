@@ -10,7 +10,7 @@ A typical dataset of 10,000 barcodes or less will run in under 10 seconds in a m
 
 This method is different than the original in that instead of relying on precomputed clusters for annotation, it traverses each barcode in a neighborhood graph and uses the k nearest-neighbors to assign a per-cell annotation. 
 
-This method is highly sensitive to the marker genes used. You can use the marker genes from the original ScType database or provide your own, as long as the input marker list is created to look like the output of `gene_sets_prepare.R` from the original method. In other words, you need a nested named list with at least positive markers for your cell types or regions of interest. 
+This method is highly sensitive to the marker genes used. The more specific your markers are the better the annotation will be. You can use the marker genes from the original ScType database or provide your own, as long as the input marker list is created to look like the output of `gene_sets_prepare.R` from the original method. In other words, you need a nested named list with at least positive markers for your cell types or regions of interest. 
 
 Your dataset must be processed up to the shared neighborhood graph calculation or some `igraph` object with similarity weights for edges. 
 
