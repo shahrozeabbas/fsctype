@@ -1,4 +1,4 @@
-require(data.table)
+require(data.table); require(igraph)
 
 fsctype <- function(barcodes, graph, counts, markers, n_neighbors=20, positive.only=TRUE) {
 
