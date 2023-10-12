@@ -53,7 +53,7 @@ predictions <- fsctype(barcodes=cells, graph=graph, counts=counts, markers=marke
 
 
 cell_type <- predictions[, prediction]
-names(cell_type) <- predictions[, cells]
+names(cell_type) <- predictions[, barcodes]
 object <- object %>% AddMetaData(metadata=factor(cell_type), col.name='cell_type') 
 
 ggsave(
