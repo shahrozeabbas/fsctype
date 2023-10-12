@@ -8,11 +8,10 @@ fsctype <- function(barcodes, graph, counts, markers, n_neighbors=20, positive.o
         data.table(cells=get_neighbors(g=graph, cell=cell, k=n_neighbors))
     }, simplify=FALSE), idcol='seed')
     
-
-    predictions <- scores[neighborhood, on='cells', allow.cartesian=TRUE][, 
-        .(score=sum(score)), .(seed, type)][, .SD[which.max(score)], by=seed][, 
-        .(cells=seed, prediction=type, score)]
-
+    tbl <- scores[neighborhood, on='cells', allow.cartesian=TRUE][, .(score=sum(score)), .(seed, type)]
+    
+    predictions <- tbl[tbl[, .I[which.max(score)], by=seed]$V1][, .(barcodes=seed, prediction=type, score)]
+    
     return(predictions)
 
 }
