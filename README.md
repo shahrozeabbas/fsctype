@@ -33,7 +33,7 @@ object <- object %>%
 Once you have run `FindNeighbors`, you can use this graph downstream for `fsctype` as it relies on the k nearest neighbors of each cell for annotation. The `annotation_markers_list.rds` is a created marker list as defined by `gene_sets_prepare.R`. You can use this from the original `ScType` method or create your own. 
 
 ```
-source('https://github.com/shahrozeabbas/fsctype/blob/main/R/fsctype.R')
+source('https://raw.githubusercontent.com/shahrozeabbas/fsctype/main/R/fsctype.R')
 
 markers <- readRDS('annotation_markers_list.rds')
 
