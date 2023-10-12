@@ -15,9 +15,9 @@ You can install all required packages directly from `CRAN`
 ```
 install.packages(c('Seurat', 'dplyr', 'ggplot2', 'data.table', 'igraph'))
 ```
-or via `conda` and the environment file that is provided. 
+or via `mamba` and the environment file that is provided. 
 ```
-conda env create -f sctype.yml
+mamba env create -f sctype.yml
 ```
 
 ## Tutorial
