@@ -68,3 +68,5 @@ ggsave(
 )
 
 ```
+
+### If you use `fsctype` please cite using the link under the 'About' section. 
