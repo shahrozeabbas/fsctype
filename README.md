@@ -10,8 +10,12 @@ A typical dataset of 10,000 barcodes or less will run in under 10 seconds in a m
 This method is different than the original in that instead of relying on precomputed clusters for annotation, it traverses each barcode in a neighborhood graph and uses the k nearest-neighbors to assign a per-cell annotation. 
 
 ## Installation
-Required pacakges can be installed via `conda` and the environment file that is provided. You can also install all required packages directly from `CRAN`.
+You can install all required packages directly from `CRAN`
 
+```
+install.packages(c('Seurat', 'dplyr', 'ggplot2', 'data.table', 'igraph'))
+```
+or via `conda` and the environment file that is provided. 
 ```
 conda env create -f sctype.yml
 ```
