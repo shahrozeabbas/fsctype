@@ -1,7 +1,6 @@
-# fsctype
-### Modification of the Original [ScType](https://github.com/IanevskiAleksandr/sc-type) Method for Barcode Annotation using KNN Algorithm
+# fsctype - Modification of the Original [ScType](https://github.com/IanevskiAleksandr/sc-type) Method for Barcode Annotation using the KNN Algorithm
 
-
+## Description
 The fsctype method is based on the original `ScType` method used for cluster annotation of single-cell datasets using known markers. 
 
 This variation uses the `data.table` package to substantially speed up calculations and also makes use of the `future` package for parallel execution. 
@@ -10,12 +9,14 @@ A typical dataset of 10,000 barcodes or less will run in under 10 seconds in a m
 
 This method is different than the original in that instead of relying on precomputed clusters for annotation, it traverses each barcode in a neighborhood graph and uses the k nearest-neighbors to assign a per-cell annotation. 
 
+## Installation
 Required pacakges can be installed via `conda` and the environment file that is provided. You can also install all required packages directly from `CRAN`.
 
 ```
 conda env create -f sctype.yml
 ```
 
+## Tutorial
 This method is highly sensitive to the marker genes used. The more specific your markers are the better the annotation will be. You can use the marker genes from the original ScType database or provide your own, as long as the input marker list is created to look like the output of `gene_sets_prepare.R` from the original method. In other words, you need a nested named list with at least positive markers for your cell types or regions of interest. 
 
 Your dataset must be processed up to the shared neighborhood graph calculation or some `igraph` object with similarity weights for edges. 
