@@ -16,9 +16,9 @@ fsctype <- function(barcodes, graph, counts, markers, n_neighbors=20, positive.o
 
 }
 
-get_graph <- function(object) {
+get_graph <- function(object, graph.name) {
     
-    g <- as(object@graphs[[Graphs(object)[2]]], 'dgCMatrix')
+    g <- as(object[graph.name], 'dgCMatrix')
     g <- igraph::graph_from_adjacency_matrix(adjmatrix=g, mode='undirected', weighted=TRUE)
 
     return(g)
