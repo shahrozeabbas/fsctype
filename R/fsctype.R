@@ -16,9 +16,11 @@ fsctype <- function(barcodes, graph, counts, markers, n_neighbors=20, positive.o
 
 }
 
-get_graph <- function(object, graph.name='RNA_snn') {
+get_graph <- function(object, graph_name=NULL) {
+
+    if (is.null(graph_name)) graph_name <- paste0(Seurat::DefaultAssay(object), '_snn')
     
-    g <- as(object[[graph.name]], 'dgCMatrix')
+    g <- as(object[[graph_name]], 'dgCMatrix')
     g <- igraph::graph_from_adjacency_matrix(adjmatrix=g, mode='undirected', weighted=TRUE)
 
     return(g)
