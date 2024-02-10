@@ -55,7 +55,7 @@ get_scores <- function(counts, markers, positive.only=TRUE) {
     marker_stat <- sort(table(unlist(markers)), decreasing=TRUE)
 
     cell_markers_genes_score <- data.table(
-        score_marker_sensitivity=scales::rescale(as.numeric(marker_stat), to=c(0, 1), from=c(length(markers), 1)),
+        score_marker_sensitivity=scales::rescale(as.numeric(marker_stat), to=c(0, 1), from=c(length(markers$gs_positive), 1)),
         gene_=names(marker_stat), strinmarkersAsFactors=FALSE
     )
 
