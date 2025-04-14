@@ -17,7 +17,7 @@ install.packages(c('Seurat', 'dplyr', 'ggplot2', 'data.table', 'igraph'))
 ```
 or via `mamba` and the environment file that is provided. 
 ```
-mamba env create -f sctype.yml
+mamba env create -f fsctype.yml
 ```
 
 ## Tutorial
